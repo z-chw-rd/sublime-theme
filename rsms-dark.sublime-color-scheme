@@ -43,6 +43,8 @@
     // "gutter": "#000", // defaults to background
     "gutter_foreground": "color(var(fg) alpha(0.3))",
     "line_highlight": "color(var(fg) alpha(0.12))",
+
+    // diffs
     "line_diff_width": "2",  // width of diff lines (in dp)
     "line_diff_added": "var(green)",
     "line_diff_modified": "color(var(yellow) lightness(65%))",
@@ -122,8 +124,10 @@
     {
       // Type definition
       // e.g. "Foo" in `typedef struct x Foo` (C)
-      "scope": "entity.name.type, entity.name.class, meta.type.declaration entity.name.type, entity.name.type.typedef",
-      "foreground": "color(var(type) lightness(70%) saturation(90%))"
+      "scope": "entity.name.type, entity.name.class, entity.name.struct, entity.name.enum, meta.type.declaration entity.name.type, entity.name.type.typedef",
+      //"foreground": "color(var(type) lightness(70%) saturation(90%))",
+      "foreground": "var(fg)",
+      "font_style": "bold",
     },
     {
       // Type reference
@@ -214,6 +218,7 @@
       "foreground": "color(var(yellow) lightness(80%))"
     },
 
+    // --------------------------------------------------------------------------------------------
     // Structured text
     {
       "scope": "text punctuation",
@@ -224,9 +229,18 @@
       "foreground": "var(fg)",
       "font_style": "bold"
     },
+    {
+      "scope": "text markup.heading.1, text markup.heading.2",
+      "background": "color(hsl(53, 50%, 50%) alpha(0.2))",
+    },
+    {
+      "scope": "text markup.heading.1 markup.raw, text markup.heading.2 markup.raw",
+      "background": "color(hsl(53, 80%, 70%) alpha(0.2))",
+    },
     { "scope": "text markup.italic", "font_style": "italic" },
     { "scope": "text markup.bold", "font_style": "bold" },
     { "scope": "text markup.bold & markup.italic", "font_style": "bold italic" },
+    { "scope": "text markup.italic & markup.bold", "font_style": "bold italic" },
     { "scope": "text markup.strikethrough", "foreground": "var(unimportant)" },
     { // List bullets
       // "-" in "- hello\n- world"

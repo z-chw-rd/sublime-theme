@@ -10,10 +10,11 @@
     "blue2": "hsl(224, 100%, 50%)",
     "blue3": "hsl(240, 100%, 23%)",
     "blue4": "hsl(204, 100%, 83%)",
+    "blueDim": "hsl(216, 60%, 30%)",
     "cyan": "hsl(147, 100%, 76%)",
     "cyan2": "hsl(144, 71%, 23%)",
     "cyanDark": "hsl(160, 40%, 4%)",
-    "green": "hsl(85, 85%, 79%)",
+    "green": "hsl(100, 85%, 79%)",
     "green2": "hsl(120, 14%, 23%)",
     "grey": "hsl(0, 0%, 20%)",
     "grey2": "hsl(0, 0%, 40%)",
@@ -52,6 +53,12 @@
     // gutter
     "gutter_foreground": "var(grey3)",
     "line_highlight": "color(var(yellow) alpha(0.31))",
+
+    // diffs
+    "line_diff_width": "2",  // width of diff lines (in dp)
+    "line_diff_added": "var(green)",
+    "line_diff_modified": "color(var(yellow) lightness(65%))",
+    "line_diff_deleted": "color(var(red) lightness(60%))",
 
     // brackets
     "brackets_options": "foreground bold",
@@ -109,8 +116,9 @@
     },
     {
       // e.g. "Config" in `class Config` (TS)
-      "scope": "entity.name.class, entity.name.type.class, entity.name.type.interface",
-      "font_style": "bold"
+      "scope": "entity.name.type, entity.name.class, entity.name.struct, entity.name.enum, meta.type.declaration entity.name.type, entity.name.type.typedef",
+      "font_style": "bold",
+      "foreground": "var(blue)"
     },
     {
       "scope": "keyword, storage",
@@ -132,7 +140,7 @@
     },
     {
       "scope": "entity.other.inherited-class",
-      "foreground": "var(grey2)",
+      "foreground": "var(blueDim)",
       "font_style": "bold"
     },
     {
@@ -186,6 +194,140 @@
       "foreground": "var(orange)"
     },
 
+    // -------------------------------------------------------------------------------------------
+    // Structured text
+    {
+      "scope": "text punctuation",
+      "foreground": "color(black alpha(0.6))"
+    },
+    {
+      "scope": "text markup.heading, text markup.heading markup.raw.inline",
+      "foreground": "black",
+      "font_style": "bold"
+    },
+    // {
+    //   "scope": "text markup.heading.2",
+    //   "foreground": "white",
+    //   "background": "black",
+    // },
+    {
+      "scope": "text markup.heading.1, text markup.heading.2",
+      "background": "color(hsl(58, 100%, 50%) alpha(0.2))",
+    },
+    {
+      "scope": "text markup.heading.1 markup.raw, text markup.heading.2 markup.raw",
+      "background": "color(hsl(58, 100%, 40%) alpha(0.2))",
+    },
+    {
+      "scope": "text markup.heading.2 punctuation",
+      "foreground": "hsl(0, 0%, 60%)",
+    },
+    { "scope": "text markup.italic", "font_style": "italic" },
+    { "scope": "text markup.bold", "font_style": "bold" },
+    { "scope": "text markup.bold & markup.italic", "font_style": "bold italic" },
+    { "scope": "text markup.italic & markup.bold", "font_style": "bold italic" },
+    { "scope": "text markup.strikethrough", "foreground": "color(black alpha(0.6))" },
+    { // List bullets
+      // "-" in "- hello\n- world"
+      "scope": "text markup.list punctuation.definition.list_item, markup.list.numbered.bullet.markdown",
+      "foreground": "var(blue)",
+      "font_style": "bold"
+    },
+    // { // List item
+    //   "scope": "text markup.list meta.paragraph.list",
+    //   "foreground": "red",
+    // },
+    // { // table header text
+    //   "scope": "text.html.markdown meta.table.header",
+    //   "foreground": "var(dataBase)",
+    // },
+    // { // table lines
+    //   "scope": "text.html.markdown punctuation.separator.table-cell, text.html.markdown meta.table.header-separator punctuation.section.table-header",
+    //   "foreground": "var(dataBase)",
+    // },
+    // // link, e.g. [Title](url)
+    // { "scope": "text meta.link", "foreground": "var(fg)" },
+    // { "scope": "text meta.link markup.underline.link", "foreground": "red" },
+    // // image, e.g. ![alt](url)
+    // { "scope": "text meta.image", "foreground": "var(unimportant)" },
+    // { "scope": "text meta.image markup.underline.link", "foreground": "var(fg)" },
+    { // code, e.g. `...` and ```...```
+      "scope": "text markup.raw, text meta.code-fence.definition, text markup.raw.code-fence",
+      "background": "color(black alpha(0.04))"
+    },
+    {
+      "scope": "text meta.code-fence.definition constant",
+      "foreground": "color(black alpha(0.5))"
+    },
+
+    // -------------------------------------------------------------------------------------------
+    // diff
+    {
+      "scope": "source.diff",
+      "foreground": "black",
+      // "font_style": "italic underline"
+    },
+    { // header block
+      "scope": "meta.block.header.diff",
+      "background": "color(black alpha(0.08))",
+    },
+    { // header, e.g. "--- a" or "+++ b"
+      "scope": "meta.diff.header",
+      "foreground": "color(black alpha(0.7))",
+      "font_style": "italic"
+    },
+    { // filenames
+      "scope": "string.unquoted.git",
+      "font_style": "",
+      "foreground": "black",
+    },
+    { // header prev files e.g. "--- a" in "--- a/foo/bar.c"
+      "scope": "meta.diff.header.from-file",
+      "foreground": "var(red)",
+    },
+    { // header prev files e.g. "--- a/foo/bar.c"
+      "scope": "meta.diff.header.from-file string.unquoted.git",
+      "foreground": "var(red)",
+      "font_style": "bold",
+    },
+    { // header prev files e.g. "--- b" in "--- b/foo/bar.c"
+      "scope": "meta.diff.header.to-file",
+      "foreground": "color(var(green) lightness(26%))",
+    },
+    { // header prev files e.g. "+++ b/foo/bar.c"
+      "scope": "meta.diff.header.to-file string.unquoted.git",
+      "foreground": "color(var(green) lightness(26%))",
+      "font_style": "bold",
+    },
+    { // plain context text in between
+      "scope": "meta.block.delta.diff",
+      "foreground": "color(black alpha(0.6))",
+    },
+    { // whole "offset" section, e.g. "@@ -229,12 +229,12 @@ typedef struct Foo {"
+      "scope": "meta.toc-list.hunk.diff",
+      "foreground": "color(black alpha(0.9))",
+      "background": "color(black alpha(0.08))",
+    },
+    { // e.g. "@@ -229,12 +229,12 @@"
+      "scope": "meta.range.unified.diff",
+      "font_style": "italic"
+    },
+    { // context line just after "@@", e.g. "typedef struct Foo {"
+      "scope": "entity.name.section.diff",
+      "font_style": "bold",
+    },
+    { // removed line
+      "scope": "markup.deleted",
+      "foreground": "hsl(6, 10%, 30%)",
+      "background": "hsl(6, 80%, 94%)",
+    },
+    { // added line
+      "scope": "markup.inserted",
+      "foreground": "hsl(133, 80%, 10%)",
+      "background": "hsl(133, 80%, 92%)",
+    },
+
+    // -------------------------------------------------------------------------------------------
     // misc
     {
       "scope": "invalid.deprecated",
