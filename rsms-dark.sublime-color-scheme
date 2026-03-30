@@ -2,16 +2,16 @@
   "name": "rsms dark",
   "author": "rsms",
   "variables": {
-    "red":    "hsl(5, 100%, 50%)",
-    "green":  "hsl(150, 100%, 43%)",
-    "blue":   "hsl(210, 100%, 50%)",
+    "red": "hsl(5, 100%, 50%)",
+    "green": "hsl(150, 100%, 43%)",
+    "blue": "hsl(210, 100%, 50%)",
     "orange": "hsl(27, 100%, 50%)",
     "yellow": "hsl(60, 100%, 50%)",
-    "cyan":   "hsl(180, 100%, 50%)",
+    "cyan": "hsl(180, 100%, 50%)",
     // "transparent": "#ff000000",  // note: ff needed to force transparency
-
-    "fg": "#fff",
-    "bg": "hsl(0, 0%, 7%)",
+    "fg": "#FFF",
+    // "bg": "hsl(0, 0%, 7%)",
+    "bg": "#191919",
     "unimportant": "color(var(fg) alpha(0.4))",
     "cursor": "hsl(320, 90%, 70%)",
     "accent": "var(cursor)",
@@ -22,7 +22,6 @@
     "meta": "color(var(data) saturation(15%) lightness(50%))",
     "metaKeyword": "color(var(data) saturation(20%) lightness(60%))",
     "header": "color(var(keyword) saturation(80%) lightness(70%))",
-
     "fgBase": "color(var(fg) alpha(0.8))",
     "typeRef": "color(var(type) saturation(100%) lightness(87%))",
     "keywordBase": "color(var(keyword) saturation(40%) lightness(70%))",
@@ -33,40 +32,33 @@
     "background": "var(bg)",
     "accent": "var(accent)",
     "caret": "var(cursor)",
-
     // selection
     "selection": "color(var(selection) alpha(0.3))",
     "selection_border_width": "0",
     "inactive_selection": "color(var(selection) alpha(0.2) saturation(0%))",
-
     // gutter
     // "gutter": "#000", // defaults to background
     "gutter_foreground": "color(var(fg) alpha(0.3))",
     "line_highlight": "color(var(fg) alpha(0.12))",
-
     // diffs
-    "line_diff_width": "2",  // width of diff lines (in dp)
+    "line_diff_width": "2", // width of diff lines (in dp)
     "line_diff_added": "var(green)",
     "line_diff_modified": "color(var(yellow) lightness(65%))",
     "line_diff_deleted": "color(var(red) lightness(60%))",
-
     // guides
     // alpha part controls color of guides (vertical tab lines)
     "guide": "color(var(fg) alpha(0.06))",
-
     // decorations
-    "highlight": "color(var(selection) alpha(0.4) lightness(70%))",  // border of "other" matches
+    "highlight": "color(var(selection) alpha(0.4) lightness(70%))", // border of "other" matches
     "find_highlight_foreground": "#000",
     "find_highlight": "var(yellow)",
     "misspelling": "color(var(red) lightness(65%))",
     // "invisibles": "#000",  // defaults to color(foreground alpha(0.35))
-
     // brackets
     "brackets_options": "foreground bold",
     "brackets_foreground": "var(cursor)",
     "bracket_contents_options": "foreground",
     "bracket_contents_foreground": "var(cursor)",
-
     // canvas shadow (indicates scroll)
     "shadow": "color(var(cursor) alpha(0.8))",
     "shadow_width": "5",
@@ -78,7 +70,6 @@
       "foreground": "color(var(fg) alpha(0.35))",
       // "foreground_adjust": "alpha(0.3)"
     },
-
     {
       // meta keyword (may appear in comments)
       "scope": "meta.keyword",
@@ -94,7 +85,6 @@
       "scope": "meta.annotation",
       "foreground": "var(meta)",
     },
-
     {
       // Punctuation
       // separator  e.g. "," and ":" in `{ foo: bar, baz: cat }`
@@ -119,7 +109,6 @@
       "scope": "punctuation.separator, punctuation.terminator, punctuation.accessor, punctuation.section, keyword.operator.type.annotation, meta.interface keyword.operator.optional, meta.field.declaration keyword.operator.optional",
       "foreground": "var(unimportant)"
     },
-
     // Type
     {
       // Type definition
@@ -139,7 +128,6 @@
       // Foo   meta.function.parameters meta.group
       // p     meta.function.parameters meta.group variable.parameter
     },
-
     // Keyword
     {
       // Keyword
@@ -156,14 +144,12 @@
       // "foreground": "var(fgBase)"
       "foreground": "color(var(orange) lightness(80%))"
     },
-
     // Function
     { // Function definitions
       "scope": "entity.name.function - meta.function-call",
       "foreground": "var(fg)",
       "font_style": "bold",
     },
-
     // Data
     { // e.g. "foo" and 42
       // Note: JS inside HTML uses punctuation.definition...
@@ -193,7 +179,6 @@
     //   // Uses "Hashed Syntax Highlighting"
     //   // https://www.sublimetext.com/docs/3/color_schemes.html#hashed_syntax_highlighting
     // },
-
     // XML, HTML etc with tags
     {
       "scope": "meta.tag",
@@ -207,7 +192,6 @@
       "scope": "meta.tag entity.name",
       "foreground": "var(typeRef)"
     },
-
     // Assembly
     {
       "scope": "storage.register, storage.other.register, constant.language.registers, entity.name.function.reg, constant.language.register",
@@ -217,7 +201,6 @@
       "scope": "source.asm entity.directive, source.asm support.function.directive",
       "foreground": "color(var(yellow) lightness(80%))"
     },
-
     // --------------------------------------------------------------------------------------------
     // Structured text
     {
@@ -237,11 +220,26 @@
       "scope": "text markup.heading.1 markup.raw, text markup.heading.2 markup.raw",
       "background": "color(hsl(53, 80%, 70%) alpha(0.2))",
     },
-    { "scope": "text markup.italic", "font_style": "italic" },
-    { "scope": "text markup.bold", "font_style": "bold" },
-    { "scope": "text markup.bold & markup.italic", "font_style": "bold italic" },
-    { "scope": "text markup.italic & markup.bold", "font_style": "bold italic" },
-    { "scope": "text markup.strikethrough", "foreground": "var(unimportant)" },
+    {
+      "scope": "text markup.italic",
+      "font_style": "italic"
+    },
+    {
+      "scope": "text markup.bold",
+      "font_style": "bold"
+    },
+    {
+      "scope": "text markup.bold & markup.italic",
+      "font_style": "bold italic"
+    },
+    {
+      "scope": "text markup.italic & markup.bold",
+      "font_style": "bold italic"
+    },
+    {
+      "scope": "text markup.strikethrough",
+      "foreground": "var(unimportant)"
+    },
     { // List bullets
       // "-" in "- hello\n- world"
       "scope": "text markup.list punctuation.definition.list_item",
@@ -261,11 +259,23 @@
       "foreground": "var(dataBase)",
     },
     // link, e.g. [Title](url)
-    { "scope": "text meta.link", "foreground": "var(fg)" },
-    { "scope": "text meta.link markup.underline.link", "foreground": "var(unimportant)" },
+    {
+      "scope": "text meta.link",
+      "foreground": "var(fg)"
+    },
+    {
+      "scope": "text meta.link markup.underline.link",
+      "foreground": "var(unimportant)"
+    },
     // image, e.g. ![alt](url)
-    { "scope": "text meta.image", "foreground": "var(unimportant)" },
-    { "scope": "text meta.image markup.underline.link", "foreground": "var(fg)" },
+    {
+      "scope": "text meta.image",
+      "foreground": "var(unimportant)"
+    },
+    {
+      "scope": "text meta.image markup.underline.link",
+      "foreground": "var(fg)"
+    },
     { // code, e.g. `...` and ```...```
       "scope": "text markup.raw, text meta.code-fence.definition, text markup.raw.code-fence",
       "background": "color(var(fg) alpha(0.07))"
@@ -274,9 +284,6 @@
       "scope": "text meta.code-fence.definition constant",
       "foreground": "var(unimportant)"
     },
-
-
-
     // -------------------------------------------------------------------------------------------
     // diff
     {
@@ -302,7 +309,6 @@
       "scope": "meta.diff.header.to-file",
       "foreground": "color(var(green) saturation(90%) lightness(60%))",
     },
-
     { // removed line
       "scope": "markup.deleted",
       "foreground": "color(var(red) saturation(65%) lightness(70%))",
@@ -315,8 +321,6 @@
       "foreground": "color(var(green) saturation(90%) lightness(80%))",
       // "background": "color(var(green) saturation(10%) lightness(13%))",
     },
-
-
     // -------------------------------------------------------------------------------------------
     // misc
     {
@@ -329,13 +333,11 @@
       "foreground": "var(fg)",
       "background": "var(red)"
     },
-
     // {
     //   "scope": "meta.block.go",
     //   "foreground": "var(fg)",
     //   "background": "var(red)"
     // },
-
     // Example of Hashed Syntax Highlighting
     // https://www.sublimetext.com/docs/3/color_schemes.html#hashed_syntax_highlighting
     // Note: It seems that "source - punctuation" means "source minus punctuation", but
