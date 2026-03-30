@@ -10,7 +10,6 @@
     "cyan": "hsl(180, 100%, 50%)",
     // "transparent": "#ff000000",  // note: ff needed to force transparency
     "fg": "#FFF",
-    // "bg": "hsl(0, 0%, 7%)",
     "bg": "#191919",
     "unimportant": "color(var(fg) alpha(0.4))",
     "cursor": "hsl(320, 90%, 70%)",
