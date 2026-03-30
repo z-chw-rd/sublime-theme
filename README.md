@@ -44,9 +44,3 @@ When in fullscreen, the square tab styles works much better than the default rou
 "file_tab_style": "square",
 ```
 
-
-## Examples
-
-<img src="rsms-dark.png"><br>
-<img src="rsms-dark-mono.png" title="Monochromatic version of the dark color scheme"><br>
-<img src="rsms-bright.png">
